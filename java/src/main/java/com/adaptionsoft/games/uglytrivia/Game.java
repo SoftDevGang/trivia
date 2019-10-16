@@ -36,8 +36,6 @@ public class Game {
     }
 
     public boolean add(String playerName) {
-
-
         players.add(playerName);
         places[howManyPlayers()] = 0;
         purses[howManyPlayers()] = 0;
@@ -169,15 +167,16 @@ public class Game {
 
                 boolean winner = didPlayerWin();
                 currentPlayer++;
-                if (currentPlayer == players.size()) currentPlayer = 0;
+                if (currentPlayer == players.size())
+                    currentPlayer = 0;
 
                 return winner;
             } else {
                 currentPlayer++;
-                if (currentPlayer == players.size()) currentPlayer = 0;
+                if (currentPlayer == players.size())
+                    currentPlayer = 0;
                 return true;
             }
-
 
         } else {
 
@@ -190,7 +189,8 @@ public class Game {
 
             boolean winner = didPlayerWin();
             currentPlayer++;
-            if (currentPlayer == players.size()) currentPlayer = 0;
+            if (currentPlayer == players.size())
+                currentPlayer = 0;
 
             return winner;
         }
@@ -202,10 +202,10 @@ public class Game {
         inPenaltyBox[currentPlayer] = true;
 
         currentPlayer++;
-        if (currentPlayer == players.size()) currentPlayer = 0;
+        if (currentPlayer == players.size())
+            currentPlayer = 0;
         return true;
     }
-
 
     private boolean didPlayerWin() {
         return !(purses[currentPlayer] == 6);
