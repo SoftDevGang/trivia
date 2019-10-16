@@ -51,11 +51,12 @@ public class Game {
     }
 
     public void roll(int roll) {
-        foo(roll, System.out::println, (String) players.get(currentPlayer),
+        // worked on...
+        roll(roll, System.out::println, (String) players.get(currentPlayer),
             currentPlayer, b -> isGettingOutOfPenaltyBox = b);
     }
 
-    private void foo(int roll, Consumer<Object> println, String playerName, int currentPlayer,
+    private void roll(int roll, Consumer<Object> println, String playerName, int currentPlayer,
                      Consumer<Boolean> gettingOutOfPenaltyBox) {
         println.accept(currentPlayerRoledMessage(roll, playerName));
 
@@ -91,14 +92,13 @@ public class Game {
             askQuestion(newCategory, println);
 
             places[currentPlayer] = newPlace;
-
         }
     }
 
-    private static String getNewPlaceMessage(PlayerState playerState2) {
-        return playerState2.getPlayerName()
+    private static String getNewPlaceMessage(PlayerState playerState) {
+        return playerState.getPlayerName()
             + "'s new location is "
-            + playerState2.getNewPlace() + "\nThe category is " + playerState2.getNewCategory();
+            + playerState.getNewPlace() + "\nThe category is " + playerState.getNewCategory();
     }
 
     private static String playerNotGettingOutOfPenaltyBoxMessage(String playerName) {
@@ -232,30 +232,6 @@ public class Game {
 
         public String getNewCategory() {
             return newCategory;
-        }
-    }
-
-    private static class PlayerState2 {
-        private final String playerName;
-        private final int oldPlace;
-        private final String category;
-
-        private PlayerState2(String playerName, int oldPlace, String category) {
-            this.playerName = playerName;
-            this.oldPlace = oldPlace;
-            this.category = category;
-        }
-
-        public String getPlayerName() {
-            return playerName;
-        }
-
-        public int getOldPlace() {
-            return oldPlace;
-        }
-
-        public String getCategory() {
-            return category;
         }
     }
 }
